@@ -3,8 +3,8 @@
 #include <stdlib.h>
 
 long long recursive_fibonacci(int num) {
-    if (num == 0) return 0;
-    else if (num == 1) return 1;
+    if (num < 0) return -1;
+    else if (num <= 1) return num;
 
     return recursive_fibonacci(num - 1) + recursive_fibonacci(num - 2);
 }
@@ -37,6 +37,7 @@ long long dynamic_programming_fibonacci(int num){
         dp[i] = dp[i - 2] + dp[i - 1];
     }
     
+    long long res = dp[num];
     free(dp);
-    return dp[num];
+    return res;
 }
